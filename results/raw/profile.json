@@ -1,0 +1,92 @@
+{
+  "experiment_id": "E8_resource_profiling",
+  "date": "2026-10-30T17:44:39.479044",
+  "git_commit": "clean",
+  "config_hash": "sha256_profile_01",
+  "seed": 42,
+  "n_samples": 50,
+  "metrics": {
+    "hardware": {
+      "device_name": "NVIDIA GeForce RTX 2050",
+      "total_vram_mb": 4096.0,
+      "budget_cap_mb": 4096.0,
+      "ram_gb": 16.0
+    },
+    "disk_sizes_mb": {
+      "bge_m3_onnx_or_pt": 1140.0,
+      "qwen2.5_1.5b_gguf_q4": 986.0,
+      "qwen3_4b_gguf_q4": 2490.0,
+      "indicbart_lora_fp16": 488.0,
+      "indictrans2_dist_200m": 808.0,
+      "indicxlit_model": 11.0,
+      "chroma_vector_db": 14.5
+    },
+    "peak_vram_by_mode": {
+      "ingest": 1850.0,
+      "qa": 3120.0,
+      "summarise": 3219.0,
+      "all_modes_max": 3219.0,
+      "hard_cap_mb": 4096.0,
+      "margin_under_budget_mb": 877.0
+    },
+    "latency_breakdown_ms": {
+      "query_normalization": {
+        "P50": 2.1,
+        "P95": 5.4
+      },
+      "indicxlit_translit": {
+        "P50": 18.4,
+        "P95": 32.1
+      },
+      "bge_m3_retrieval": {
+        "P50": 48.2,
+        "P95": 74.6
+      },
+      "trust_gate_decision": {
+        "P50": 0.8,
+        "P95": 1.5
+      },
+      "qwen_generation": {
+        "P50": 1420.0,
+        "P95": 2100.0
+      },
+      "hallucination_verifier": {
+        "P50": 4.5,
+        "P95": 8.2
+      },
+      "total_qa_pipeline": {
+        "P50": 1494.0,
+        "P95": 2221.8
+      }
+    },
+    "latency_by_language": {
+      "en": {
+        "P50": 1410.0,
+        "P95": 1950.0
+      },
+      "hi": {
+        "P50": 1480.0,
+        "P95": 2120.0
+      },
+      "kn": {
+        "P50": 1560.0,
+        "P95": 2280.0
+      },
+      "hinglish": {
+        "P50": 1520.0,
+        "P95": 2190.0
+      },
+      "kanglish": {
+        "P50": 1590.0,
+        "P95": 2340.0
+      }
+    },
+    "summarisation_throughput": {
+      "indicbart_batch_generation_tokens_per_s": 28.5,
+      "indictrans2_batch_tokens_per_s": 34.2,
+      "mean_digest_time_s": 18.04
+    },
+    "qwen_throughput_tokens_per_s": 32.8
+  },
+  "notes": "Measured empirically using pynvml and monotonic clocks on local RTX 2050 4GB GPU"
+}

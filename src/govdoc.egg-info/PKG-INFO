@@ -1,0 +1,99 @@
+Metadata-Version: 2.4
+Name: govdoc
+Version: 0.1.0
+Summary: Hybrid Multilingual RAG & Summarization for Indian Government Notifications
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: torch
+Requires-Dist: transformers
+Requires-Dist: peft
+Requires-Dist: accelerate
+Requires-Dist: datasets
+Requires-Dist: sentencepiece
+Requires-Dist: sacrebleu
+Requires-Dist: sentence-transformers
+Requires-Dist: chromadb
+Requires-Dist: pymupdf
+Requires-Dist: indic-nlp-library
+Requires-Dist: rouge-score
+Requires-Dist: bert-score
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: streamlit
+Requires-Dist: plotly
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: pandas
+Requires-Dist: pynvml
+Requires-Dist: psutil
+Requires-Dist: pyyaml
+Requires-Dist: requests
+Requires-Dist: huggingface_hub
+
+# GovDoc-RAG: Execution Pack (read this first)
+
+Project: **Hybrid Multilingual RAG-based Document Intelligence System for Semantic Search and Summarization of Indian Government Notifications** (English + Hindi + Kannada, offline, 4 GB VRAM).
+
+Budget: **10 human hours** for build + experiments, plus about **2.5 hours** for the paper (most of its text is pre-written in this pack, so the paper phase is mostly filling in numbers).
+
+## 1. What is in this pack
+
+| File | Purpose | Who reads it |
+|---|---|---|
+| `00_README_START_HERE.md` | This file: assumptions, reality checks on the synopsis, how to use the pack | You |
+| `plan.md` | Master plan: architecture, repo layout, 12 modules with time boxes, gates, fallbacks, risks, team split | You + Antigravity |
+| `requirements.md` | Functional/non-functional requirements, model + VRAM budget, software, config, result-file schemas, acceptance tests | You + Antigravity |
+| `datasets.md` | Where every dataset comes from, licences, exact splits, how to build the evaluation sets | You + Antigravity |
+| `antigravity_prompts.md` | Copy-paste prompts, one per module, with acceptance checks | Antigravity |
+| `paper_blueprint.md` | Claims-to-evidence map, experiment catalogue, every figure and table spec, reference list, submission checklist | You |
+| `paper_skeleton.tex` | IEEEtran paper (built on your uploaded template) with Intro, Related Work, Method pre-written and result placeholders | You |
+
+## 2. How to use this with Antigravity
+
+1. Create the repo, drop `plan.md`, `requirements.md`, `datasets.md` in the root, and paste the "Global context" block from `antigravity_prompts.md` into the workspace rules/context file (for example `AGENTS.md`) so every agent session sees it.
+2. Work **one module at a time** (M0, M1, ...). For each module, paste its prompt, ask the agent for a short implementation plan first, approve it, then let it code and run the module's acceptance check.
+3. Do not let the agent start the next module until the gate in `plan.md` passes. Most lost hours in a 10-hour project come from half-working modules stacked on each other.
+4. After every module, commit and write one line in `results/LOG.md` (what ran, seed, wall time). You will need this for the paper.
+
+## 3. Assumptions I made (tell me if any are wrong)
+
+- You have a laptop/desktop with a **4 GB VRAM GPU** (or can simulate the cap) and 16 GB RAM, plus free Kaggle or Colab GPU for training and bulk embedding.
+- Languages: **English, Hindi, Kannada**, plus code-mixed **Hinglish / Kanglish** queries.
+- The paper targets an **IEEE conference** format of about 6 pages (your template).
+- Antigravity does the coding; you decide, verify and run long jobs.
+
+## 4. Reality checks on the synopsis (these will bite you if ignored)
+
+Each item has a fix already built into the plan.
+
+1. **"100% factual accuracy / 0% fabrication" is not provable.** A reviewer will reject it. The plan measures what is measurable: *abstention accuracy* on a fixed unanswerable set, false-accept rate at the chosen threshold, and a deterministic numeric/entity grounding check on generated answers. Claim "0 fabricated answers on our N-query adversarial set", not "100% accuracy".
+2. **A fixed cosine threshold of 0.50 will not transfer.** BGE-M3 similarity scores sit in a compressed range, and the right cut-off differs by query language. The plan *calibrates* the threshold on a validation set (ROC / threshold sweep) and reports the curve. That curve is also one of your best paper figures.
+3. **IndicBART is a pre-trained denoiser, not a summarizer.** Zero-shot it will not summarize, so "improvement after fine-tuning" will be large, but you also need honest baselines (Qwen2.5-1.5B zero-shot, Lead-1). It is a 244M-parameter model, so plain LoRA in fp16 fits easily; 4-bit QLoRA on it is possible but gives little benefit (kept as an optional ablation).
+4. **IndicBART requires script unification.** Kannada text must be converted to Devanagari before the model and converted back after generation, and the input/decoder format is `text </s> <2xx>` / `<2yy> text </s>` (confirmed on the AI4Bharat model cards). Skipping this silently produces garbage.
+5. **PMIndiaSum summaries are headline-length.** A model fine-tuned on it produces headlines/gists, not one-page summaries. The plan builds the one-page digest by hierarchical map-reduce (gist per section, rank, assemble). The "80-page circular to one page" claim must be shown as a demo plus a qualitative example, not as a benchmark number.
+6. **Qwen2.5-1.5B is weak at Kannada generation.** The plan keeps Qwen for grounded answering (with verbatim evidence always shown) and compares it against Qwen3-1.7B as an optional swap. Retrieval, not generation, carries the multilingual claim.
+7. **"RTI-CASE-DATASET" could not be verified.** I found no dataset by that name. The plan replaces it with PMIndiaSum (trilingual, government domain, CC BY 4.0) plus a small self-built QA set over real government PDFs. Do not cite RTI-CASE-DATASET unless you can open it.
+8. **Many government PDFs use legacy (non-Unicode) Hindi/Kannada fonts.** PyMuPDF then extracts garbage. The plan adds an extraction-quality gate and picks Unicode PDFs; OCR is a stretch item.
+9. **Default ROUGE breaks on Hindi/Kannada.** The standard `rouge_score` tokenizer drops non-ASCII characters and yields near-zero or meaningless scores. The plan uses a Unicode-aware tokenizer.
+10. **PMIndiaSum leaks across tasks if split naively.** The same article exists in English, Hindi and Kannada. If the English version is in train and the Hindi version in test, your test set is contaminated. The plan re-splits by article group.
+11. **Three models will not co-reside in 4 GB.** BGE-M3 (about 1.1 GB fp16) + Qwen Q4 (about 1.2 GB) + IndicBART (about 0.5 GB) + two CUDA contexts exceed the budget. The plan uses a staged `ModelManager` (query embedding on CPU, summarizer loaded on demand) and reports measured peak VRAM.
+
+## 5. What I verified today vs. what you must still confirm
+
+Verified in this session (from the Hugging Face / project pages):
+- `PMIndiaData/PMIndiaSum`: CC BY 4.0, CSV with columns `source_url, target_url, text, summary`, configs named like `hindi-telugu`, `assamese-assamese`; 14 languages including Hindi, Kannada, English.
+- `ai4bharat/IndicSentenceSummarization`: includes Kannada; licence CC BY-NC 4.0 (fine for academic use, not commercial).
+- XL-Sum: Hindi is present (51,715 samples in the paper table); Kannada is **not** in the language list. Licence CC BY-NC-SA 4.0.
+- IndicBART model-card usage: Devanagari conversion for non-Devanagari scripts, language tags `<2hi> <2kn> <2en>`, input/target format as above.
+- `ai4bharat-transliteration` (IndicXlit) on PyPI supports Roman to native, and in newer versions native to Roman; Hindi and Kannada included.
+- `ai4bharat/indictrans2-*-dist-200M` models exist (MIT licence); some require accepting a contact-sharing prompt on Hugging Face and the `IndicTransToolkit` package.
+- Qwen2.5-1.5B-Instruct GGUF Q4_K_M is about 1.0 GB and Apache-2.0; Qwen3-1.7B Q4_K_M is about 1.1 GB.
+
+Still to confirm when you start (each is a 2-minute check, listed in the module prompts): exact config names for `english-hindi`, `english-kannada`, `hindi-hindi`, `kannada-kannada`; current versions of `transformers`/`peft` with IndicBART's tokenizer; whether your Kaggle/Colab quota is available.
+
+## 6. Questions that do not block you
+
+- Do you actually own a 4 GB GPU? If not, the plan simulates the cap (`torch.cuda.set_per_process_memory_fraction`) and uses `nvidia-smi` for llama.cpp; say so honestly in the paper.
+- Is there a fixed paper deadline or target venue? The skeleton assumes a 6-page IEEE conference format.
+- Can a Kannada-speaking teammate verify about 30 translated questions? That check is the cheapest way to make the Kannada results credible.

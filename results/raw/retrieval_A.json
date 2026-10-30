@@ -1,0 +1,126 @@
+{
+  "experiment_id": "retrieval_A",
+  "date": "2026-10-29T21:44:54.531437",
+  "git_commit": "unknown",
+  "config_hash": "129b8cae7e48",
+  "seed": 42,
+  "n_samples": 1500,
+  "metrics": {
+    "E2_raw_only": {
+      "overall": {
+        "MRR": 0.5972,
+        "n": 1500,
+        "Recall@1": 0.5507,
+        "Recall@3": 0.6353,
+        "Recall@5": 0.6593,
+        "Recall@10": 0.6853
+      },
+      "by_lang": {
+        "en": {
+          "Recall@1": 0.8467,
+          "Recall@3": 0.9367,
+          "Recall@5": 0.95,
+          "Recall@10": 0.9667,
+          "MRR": 0.8928,
+          "n": 300
+        },
+        "hi": {
+          "Recall@1": 0.4767,
+          "Recall@3": 0.5567,
+          "Recall@5": 0.5817,
+          "Recall@10": 0.6167,
+          "MRR": 0.5225,
+          "n": 600
+        },
+        "kn": {
+          "Recall@1": 0.4767,
+          "Recall@3": 0.5633,
+          "Recall@5": 0.5917,
+          "Recall@10": 0.6133,
+          "MRR": 0.524,
+          "n": 600
+        }
+      },
+      "by_mode": {
+        "native": {
+          "Recall@1": 0.8256,
+          "Recall@3": 0.9144,
+          "Recall@5": 0.9322,
+          "Recall@10": 0.9478,
+          "MRR": 0.8714,
+          "n": 900
+        },
+        "romanised": {
+          "Recall@1": 0.1383,
+          "Recall@3": 0.2167,
+          "Recall@5": 0.25,
+          "Recall@10": 0.2917,
+          "MRR": 0.1858,
+          "n": 600
+        }
+      }
+    },
+    "E3_raw_plus_translit": {
+      "overall": {
+        "MRR": 0.5959,
+        "n": 1500,
+        "Recall@1": 0.5507,
+        "Recall@3": 0.6313,
+        "Recall@5": 0.6567,
+        "Recall@10": 0.6833
+      },
+      "by_lang": {
+        "en": {
+          "Recall@1": 0.8467,
+          "Recall@3": 0.9367,
+          "Recall@5": 0.95,
+          "Recall@10": 0.9667,
+          "MRR": 0.8928,
+          "n": 300
+        },
+        "hi": {
+          "Recall@1": 0.4783,
+          "Recall@3": 0.55,
+          "Recall@5": 0.5783,
+          "Recall@10": 0.6117,
+          "MRR": 0.5212,
+          "n": 600
+        },
+        "kn": {
+          "Recall@1": 0.475,
+          "Recall@3": 0.56,
+          "Recall@5": 0.5883,
+          "Recall@10": 0.6133,
+          "MRR": 0.5221,
+          "n": 600
+        }
+      },
+      "by_mode": {
+        "native": {
+          "Recall@1": 0.8256,
+          "Recall@3": 0.9144,
+          "Recall@5": 0.9322,
+          "Recall@10": 0.9478,
+          "MRR": 0.8714,
+          "n": 900
+        },
+        "romanised": {
+          "Recall@1": 0.1383,
+          "Recall@3": 0.2067,
+          "Recall@5": 0.2433,
+          "Recall@10": 0.2867,
+          "MRR": 0.1826,
+          "n": 600
+        }
+      }
+    },
+    "transliteration_delta": {
+      "overall_MRR": -0.0013,
+      "overall_Recall@1": 0.0,
+      "overall_Recall@3": -0.004,
+      "overall_Recall@5": -0.0026,
+      "overall_Recall@10": -0.002
+    }
+  },
+  "notes": "E2/E3: article-level batched cosine retrieval on Benchmark A (answerable queries only)"
+}

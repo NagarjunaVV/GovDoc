@@ -1,0 +1,17 @@
+00_README_START_HERE.md
+pyproject.toml
+src/govdoc/__init__.py
+src/govdoc.egg-info/PKG-INFO
+src/govdoc.egg-info/SOURCES.txt
+src/govdoc.egg-info/dependency_links.txt
+src/govdoc.egg-info/requires.txt
+src/govdoc.egg-info/top_level.txt
+src/govdoc/app/__init__.py
+src/govdoc/data/__init__.py
+src/govdoc/eval/__init__.py
+src/govdoc/generate/__init__.py
+src/govdoc/ingest/__init__.py
+src/govdoc/retrieve/__init__.py
+src/govdoc/runtime/__init__.py
+src/govdoc/summarize/__init__.py
+src/govdoc/train/__init__.py

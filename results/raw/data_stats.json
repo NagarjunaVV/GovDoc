@@ -1,0 +1,46 @@
+{
+  "source": {
+    "mean": 614.91,
+    "median": 284.0,
+    "p90": 1480.0,
+    "p99": 4824.0,
+    "max": 16873
+  },
+  "target": {
+    "mean": 20.23,
+    "median": 19.0,
+    "p90": 30.0,
+    "p99": 50.0,
+    "max": 135
+  },
+  "counts_per_split_direction": {
+    "train": {
+      "en-en": 3000,
+      "en-hi": 3000,
+      "en-kn": 3000,
+      "hi-hi": 3000,
+      "kn-kn": 3000
+    },
+    "val": {
+      "en-en": 200,
+      "en-hi": 200,
+      "en-kn": 200,
+      "hi-hi": 200,
+      "kn-kn": 200
+    },
+    "test": {
+      "en-en": 200,
+      "en-hi": 200,
+      "en-kn": 200,
+      "hi-hi": 200,
+      "kn-kn": 200
+    }
+  },
+  "dropped_unmappable_rows": 2446,
+  "unique_groups": {
+    "train": 6618,
+    "val": 780,
+    "test": 762,
+    "total": 8160
+  }
+}

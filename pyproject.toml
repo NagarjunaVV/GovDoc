@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "govdoc"
+version = "0.1.0"
+description = "Hybrid Multilingual RAG & Summarization for Indian Government Notifications"
+readme = "00_README_START_HERE.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "transformers",
+    "peft",
+    "accelerate",
+    "datasets",
+    "sentencepiece",
+    "sacrebleu",
+    "sentence-transformers",
+    "chromadb",
+    "pymupdf",
+    "indic-nlp-library",
+    "rouge-score",
+    "bert-score",
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "streamlit",
+    "plotly",
+    "matplotlib",
+    "seaborn",
+    "pandas",
+    "pynvml",
+    "psutil",
+    "pyyaml",
+    "requests",
+    "huggingface_hub",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,173 @@
+{
+  "experiment_id": "summarization",
+  "date": "2026-10-29T20:18:26.894823",
+  "git_commit": "unknown",
+  "config_hash": "129b8cae7e48",
+  "seed": 42,
+  "n_samples": 60,
+  "metrics": {
+    "directions": {
+      "en-hi": {
+        "n_samples": 20,
+        "fine_tuned": {
+          "rouge1": 0.2566,
+          "rouge2": 0.0854,
+          "rougeL": 0.2208,
+          "chrf_plusplus": 22.66,
+          "bert_score_f1": 0.6057
+        },
+        "b1_indicbart": {
+          "rouge1": 0.0071,
+          "rouge2": 0.0,
+          "rougeL": 0.0071,
+          "chrf_plusplus": 0.55,
+          "bert_score_f1": 0.6366
+        },
+        "b2_qwen": {
+          "rouge1": 0.0727,
+          "rouge2": 0.0021,
+          "rougeL": 0.0488,
+          "chrf_plusplus": 7.72,
+          "bert_score_f1": 0.4946
+        },
+        "b3_lead1": {
+          "rougeL": null,
+          "chrf_plusplus": null,
+          "bert_score_f1": null
+        },
+        "bootstrap_significance": {
+          "ft_vs_b1": {
+            "mean_a": 0.2208,
+            "mean_b": 0.0071,
+            "delta": 0.2138,
+            "ci_95": [
+              0.1595,
+              0.2685
+            ],
+            "p_value": 0.0,
+            "significant": true
+          },
+          "ft_vs_b2": {
+            "mean_a": 0.2208,
+            "mean_b": 0.0488,
+            "delta": 0.172,
+            "ci_95": [
+              0.1184,
+              0.2269
+            ],
+            "p_value": 0.0,
+            "significant": true
+          }
+        }
+      },
+      "en-en": {
+        "n_samples": 20,
+        "fine_tuned": {
+          "rouge1": 0.1663,
+          "rouge2": 0.0805,
+          "rougeL": 0.1511,
+          "chrf_plusplus": 12.48,
+          "bert_score_f1": 0.6167
+        },
+        "b1_indicbart": {
+          "rouge1": 0.3107,
+          "rouge2": 0.2157,
+          "rougeL": 0.2836,
+          "chrf_plusplus": 43.76,
+          "bert_score_f1": 0.7377
+        },
+        "b2_qwen": {
+          "rouge1": 0.2763,
+          "rouge2": 0.1417,
+          "rougeL": 0.2645,
+          "chrf_plusplus": 33.45,
+          "bert_score_f1": 0.749
+        },
+        "b3_lead1": {
+          "rougeL": 0.3637,
+          "chrf_plusplus": 46.6,
+          "bert_score_f1": 0.7389
+        },
+        "bootstrap_significance": {
+          "ft_vs_b1": {
+            "mean_a": 0.1511,
+            "mean_b": 0.2836,
+            "delta": -0.1325,
+            "ci_95": [
+              -0.2124,
+              -0.0467
+            ],
+            "p_value": 1.0,
+            "significant": false
+          },
+          "ft_vs_b2": {
+            "mean_a": 0.1511,
+            "mean_b": 0.2645,
+            "delta": -0.1134,
+            "ci_95": [
+              -0.1954,
+              -0.0241
+            ],
+            "p_value": 0.998,
+            "significant": false
+          }
+        }
+      },
+      "hi-hi": {
+        "n_samples": 20,
+        "fine_tuned": {
+          "rouge1": 0.5351,
+          "rouge2": 0.4043,
+          "rougeL": 0.5048,
+          "chrf_plusplus": 52.56,
+          "bert_score_f1": 0.7507
+        },
+        "b1_indicbart": {
+          "rouge1": 0.3692,
+          "rouge2": 0.2522,
+          "rougeL": 0.3135,
+          "chrf_plusplus": 48.61,
+          "bert_score_f1": 0.7459
+        },
+        "b2_qwen": {
+          "rouge1": 0.3287,
+          "rouge2": 0.1725,
+          "rougeL": 0.2938,
+          "chrf_plusplus": 31.02,
+          "bert_score_f1": 0.6076
+        },
+        "b3_lead1": {
+          "rougeL": 0.4641,
+          "chrf_plusplus": 52.91,
+          "bert_score_f1": 0.7602
+        },
+        "bootstrap_significance": {
+          "ft_vs_b1": {
+            "mean_a": 0.5048,
+            "mean_b": 0.3135,
+            "delta": 0.1912,
+            "ci_95": [
+              0.1021,
+              0.2829
+            ],
+            "p_value": 0.0,
+            "significant": true
+          },
+          "ft_vs_b2": {
+            "mean_a": 0.5048,
+            "mean_b": 0.2938,
+            "delta": 0.2109,
+            "ci_95": [
+              0.1072,
+              0.3259
+            ],
+            "p_value": 0.0,
+            "significant": true
+          }
+        }
+      }
+    },
+    "gate_g4_passed": true
+  },
+  "notes": ""
+}

@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\caption{Dense Retrieval Performance on Benchmark A ($N=1,500$ queries) across query languages: Raw View vs. Dual-View (Raw + IndicXlit Transliteration).}
+\label{tab:retrieval}
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Query Language} & \textbf{Retrieval View} & \textbf{MRR} & \textbf{Recall@1} & \textbf{Recall@3} & \textbf{Recall@5} & \textbf{Recall@10} \\
+\midrule
+\multirow{2}{*}{English} & Raw Query View & 0.8928 & 84.7\% & 93.7\% & 95.0\% & 96.7\% \\
+ & Dual-View (+Translit) & \textbf{0.8928} & \textbf{84.7\%} & \textbf{93.7\%} & \textbf{95.0\%} & \textbf{96.7\%} \\
+\midrule
+\multirow{2}{*}{Hindi (Devanagari)} & Raw Query View & 0.5225 & 47.7\% & 55.7\% & 58.2\% & 61.7\% \\
+ & Dual-View (+Translit) & \textbf{0.5212} & \textbf{47.8\%} & \textbf{55.0\%} & \textbf{57.8\%} & \textbf{61.2\%} \\
+\midrule
+\multirow{2}{*}{Kannada (Native)} & Raw Query View & 0.5240 & 47.7\% & 56.3\% & 59.2\% & 61.3\% \\
+ & Dual-View (+Translit) & \textbf{0.5221} & \textbf{47.5\%} & \textbf{56.0\%} & \textbf{58.8\%} & \textbf{61.3\%} \\
+\midrule
+\multirow{2}{*}{\textbf{Overall (Macro Avg)}} & Raw Query View & 0.5972 & 55.1\% & 63.5\% & 65.9\% & 68.5\% \\
+ & Dual-View (+Translit) & \textbf{0.5959} & \textbf{55.1\%} & \textbf{63.1\%} & \textbf{65.7\%} & \textbf{68.3\%} \\
+\bottomrule
+\end{tabular}
+\end{table*}

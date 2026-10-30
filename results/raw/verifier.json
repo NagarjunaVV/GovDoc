@@ -1,0 +1,78 @@
+{
+  "experiment_id": "verifier",
+  "date": "2026-10-29T21:32:34.992225",
+  "git_commit": "unknown",
+  "config_hash": "129b8cae7e48",
+  "seed": 42,
+  "n_samples": 50,
+  "metrics": {
+    "n_items": 50,
+    "overall_grounded_pass_rate": 1.0,
+    "overall_corrupted_flag_rate": 1.0,
+    "by_lang": {
+      "en": {
+        "n": 10,
+        "grounded_pass_rate": 1.0,
+        "corrupted_flag_rate": 1.0
+      },
+      "hi": {
+        "n": 20,
+        "grounded_pass_rate": 1.0,
+        "corrupted_flag_rate": 1.0
+      },
+      "kn": {
+        "n": 20,
+        "grounded_pass_rate": 1.0,
+        "corrupted_flag_rate": 1.0
+      }
+    },
+    "flagged_examples": [
+      {
+        "qid": "bmB_001_en",
+        "lang": "en",
+        "corrupted_answer": "The Central Government has sanctioned an initial capital outlay of Rs. 4,500 Crores. Additionally, the total amount was ...",
+        "missing_tokens": [
+          "Rs. 99,99,999",
+          "2099"
+        ]
+      },
+      {
+        "qid": "bmB_001_hi",
+        "lang": "hi",
+        "corrupted_answer": "The Central Government has sanctioned an initial capital outlay of Rs. 4,500 Crores. Additionally, the total amount was ...",
+        "missing_tokens": [
+          "Rs. 99,99,999",
+          "2099"
+        ]
+      },
+      {
+        "qid": "bmB_001_kn",
+        "lang": "kn",
+        "corrupted_answer": "The Central Government has sanctioned an initial capital outlay of Rs. 4,500 Crores. Additionally, the total amount was ...",
+        "missing_tokens": [
+          "Rs. 99,99,999",
+          "2099"
+        ]
+      },
+      {
+        "qid": "bmB_001_hinglish",
+        "lang": "hi",
+        "corrupted_answer": "The Central Government has sanctioned an initial capital outlay of Rs. 4,500 Crores. Additionally, the total amount was ...",
+        "missing_tokens": [
+          "Rs. 99,99,999",
+          "2099"
+        ]
+      },
+      {
+        "qid": "bmB_001_kanglish",
+        "lang": "kn",
+        "corrupted_answer": "The Central Government has sanctioned an initial capital outlay of Rs. 4,500 Crores. Additionally, the total amount was ...",
+        "missing_tokens": [
+          "Rs. 99,99,999",
+          "2099"
+        ]
+      }
+    ]
+  },
+  "notes": "E6: verifier pass/flag rates on Benchmark B (grounded=gold_answer vs evidence; corrupted=tampered answer)"
+}

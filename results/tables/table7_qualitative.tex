@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Qualitative Comparison of Generated Summaries on Indian Government Press Releases.}
+\label{tab:qualitative}
+\begin{tabular}{p{0.18\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+\toprule
+\textbf{Direction / Topic} & \textbf{Reference (Gold)} & \textbf{Baseline B1 (IndicBART Base)} & \textbf{Ours (LoRA Fine-Tuned)} \\
+\midrule
+\textbf{EN-HI} & प्रधानमंत्री ने नेपाल के प्रधानमंत्री शेरबहादुर देउबा से दूरभाष पर बात की & 達 Prime Minister Narendra Modi made a telephone call to Rt. Hon. Sher Bahadur Deuba, Prime Minister of Nepal, today. The Prime Min... & \textbf{प्रधानमंत्री ने नेपाल के प्रधानमंत्री को दी श्रद्धांजलि} \\
+\midrule
+\textbf{EN-EN} & PM unveils National Emblem cast on the roof of the new Parliament Building & Moreover Interacts with the Shramjeevis involved in the making of the Parliament The Prime Minister, Shri Narendra Modi unveiled t... & \textbf{留 प्रधानमंत्री ने की की की लोकार्पण} \\
+\midrule
+\textbf{HI-HI} & प्रधानमंत्री ने नेपाल के प्रधानमंत्री शेरबहादुर देउबा से दूरभाष पर बात की & प्रधानमंत्री श्री नरेन् द्र मोदी ने नेपाल के प्रधानमंत्री शेरबहादुर देउबा को कॉल कर दूरभाष पर बातचीत की है। नेपाल में हाल ही में आ... & \textbf{達 प्रधानमंत्री ने नेपाल के प्रधानमंत्री शेरबहादुर देउबा को कॉल कर दूरभाष पर बातचीत की} \\
+\bottomrule
+\end{tabular}
+\end{table*}

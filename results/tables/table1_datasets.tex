@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Dataset statistics across languages, domains, and evaluation splits.}
+\label{tab:datasets}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Language Pair} & \textbf{Domain / Source} & \textbf{Train} & \textbf{Val} & \textbf{Test} & \textbf{Licence} \\
+\midrule
+en-en & English Notifications (PMIndiaSum) & 3,000 & 200 & 200 & CC-BY 4.0 \\
+hi-hi & Hindi Notifications (PMIndiaSum) & 3,000 & 200 & 200 & CC-BY 4.0 \\
+kn-kn & Kannada Notifications (PMIndiaSum) & 3,000 & 200 & 200 & CC-BY 4.0 \\
+en-hi & Bilingual Cross-Lingual (PIB Gazette) & 3,000 & 200 & 200 & Gov Data Open \\
+en-kn & Bilingual Cross-Lingual (GoK Circulars) & 3,000 & 200 & 200 & Gov Data Open \\
+\midrule
+Benchmark A (Retrieval) & Cross-Lingual Queries (en/hi/kn) & -- & 200 & 1,500 & Curated \\
+Benchmark B (Grounded QA) & Real Government Circulars (PIB) & -- & -- & 40 & Human Verified \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\caption{Multilingual Summarisation Results on Test Split: ROUGE-L ($F_1$), BERTScore ($F_1$), and chrF++ across directions with paired bootstrap 95\% confidence intervals.}
+\label{tab:summarisation}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Direction} & \textbf{System / Architecture} & \textbf{ROUGE-L} & \textbf{BERTScore} & \textbf{chrF++} & \textbf{95\% CI on ROUGE-L} \\
+\midrule
+\multirow{4}{*}{EN-HI} & Ours (IndicBART + LoRA) & \textbf{0.2208} & 0.6057 & 22.66 & [+0.1595, +0.2685] \\
+ & B1: IndicBART Pretrained & 0.0071 & 0.6366 & 0.55 & -- \\
+ & B2: Qwen Zero-Shot SLM & 0.0488 & 0.4946 & 7.72 & -- \\
+ & B3: Lead-1 Extractive Baseline & -- & -- & -- & -- \\
+\midrule
+\multirow{4}{*}{EN-EN} & Ours (IndicBART + LoRA) & 0.1511 & 0.6167 & 12.48 & [-0.2124, -0.0467] \\
+ & B1: IndicBART Pretrained & 0.2836 & 0.7377 & 43.76 & -- \\
+ & B2: Qwen Zero-Shot SLM & 0.2645 & 0.7490 & 33.45 & -- \\
+ & B3: Lead-1 Extractive Baseline & \textbf{0.3637} & 0.7389 & 46.60 & -- \\
+\midrule
+\multirow{4}{*}{HI-HI} & Ours (IndicBART + LoRA) & \textbf{0.5048} & 0.7507 & 52.56 & [+0.1021, +0.2829] \\
+ & B1: IndicBART Pretrained & 0.3135 & 0.7459 & 48.61 & -- \\
+ & B2: Qwen Zero-Shot SLM & 0.2938 & 0.6076 & 31.02 & -- \\
+ & B3: Lead-1 Extractive Baseline & 0.4641 & 0.7602 & 52.91 & -- \\
+\bottomrule
+\end{tabular}
+\end{table*}

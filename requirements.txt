@@ -1,0 +1,40 @@
+# Core ML and NLP
+torch>=2.0.0
+transformers>=4.40.0
+peft>=0.10.0
+accelerate>=0.28.0
+datasets>=2.18.0
+sentencepiece>=0.2.0
+sacrebleu>=2.4.0
+sentence-transformers>=2.6.0
+
+# Vector Database and Retrieval
+chromadb>=0.4.22
+
+# Document Processing
+pymupdf>=1.23.0
+
+# Indic NLP
+indic-nlp-library>=0.92
+
+# Evaluation and Statistics
+rouge-score>=0.1.2
+bert-score>=0.3.13
+numpy>=1.24.0
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# UI and Visualization
+streamlit>=1.32.0
+plotly>=5.19.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+pandas>=2.1.0
+
+# Utilities and System Monitoring
+pynvml>=11.5.0
+psutil>=5.9.0
+pyyaml>=6.0.1
+requests>=2.31.0
+huggingface_hub>=0.21.0
+pytest>=8.0.0

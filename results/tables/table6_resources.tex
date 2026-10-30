@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{System Resource Footprint, Peak VRAM by Residency Mode, and End-to-End Latency ($N=50$ requests on RTX 2050 4\,GB VRAM).}
+\label{tab:resources}
+\begin{tabular}{lrrcc}
+\toprule
+\textbf{Residency Mode} & \textbf{Peak VRAM (MB)} & \textbf{VRAM Margin (MB)} & \textbf{Latency P50 (ms)} & \textbf{Latency P95 (ms)} \\
+\midrule
+Ingestion (Embed) & 1850.0 & 2246.0 & 48.2 & 74.6 \\
+Question Answering & 3120.0 & 976.0 & 1,494.0 & 2,221.8 \\
+Summarisation (Digest) & 3219.0 & 877.0 & 18,040.0 & 21,500.0 \\
+\midrule
+\textbf{Query Language} & \multicolumn{2}{c}{\textbf{P50 Latency (ms)}} & \multicolumn{2}{c}{\textbf{P95 Latency (ms)}} \\
+\midrule
+English & \multicolumn{2}{c}{1410.0} & \multicolumn{2}{c}{1950.0} \\
+Hindi & \multicolumn{2}{c}{1480.0} & \multicolumn{2}{c}{2120.0} \\
+Kannada & \multicolumn{2}{c}{1560.0} & \multicolumn{2}{c}{2280.0} \\
+Hinglish & \multicolumn{2}{c}{1520.0} & \multicolumn{2}{c}{2190.0} \\
+Kanglish & \multicolumn{2}{c}{1590.0} & \multicolumn{2}{c}{2340.0} \\
+\bottomrule
+\end{tabular}
+\end{table}

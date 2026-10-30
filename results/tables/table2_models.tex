@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{System components, model parameter scales, quantisation, and hyperparameters.}
+\label{tab:models}
+\begin{tabular}{llrll}
+\toprule
+\textbf{Role} & \textbf{Model Backbone} & \textbf{Params} & \textbf{Precision / Q} & \textbf{Key Hyperparameters} \\
+\midrule
+Dense Retriever & \texttt{BAAI/bge-m3} & 568\,M & FP16 (Ollama) & Cosine, 1024-dim, Max 512 tok \\
+Transliteration & \texttt{IndicXlit} & 11\,M & FP32 (CPU) & Aksharantar Roman$\to$Native \\
+Monolingual Summariser & \texttt{ai4bharat/IndicBART} & 244\,M & FP16 + LoRA & $r=16, \alpha=32$, Beam 4, $n$-gram 3 \\
+Neural Translator & \texttt{IndicTrans2-dist} & 212\,M & FP16 (Rotary) & Beam 4, Script unification \\
+Grounded Answer SLM & \texttt{Qwen3-4B-Instruct} & 4.0\,B & Q4\_K\_M (GGUF) & Ctx 4096, Temp 0.1, Rep penalty 1.1 \\
+Trust Decision Gate & Dual-Threshold Cosine & -- & Deterministic & $\tau^*=0.40, \tau_{hi}=0.65, \tau_{lo}=0.30$ \\
+Grounding Verifier & Entity \& Numeric Anchor & -- & Deterministic & Exact entity recall + num check \\
+\bottomrule
+\end{tabular}
+\end{table}

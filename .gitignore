@@ -1,0 +1,70 @@
+# ==============================================================================
+# GovDoc-RAG .gitignore
+# Prevents large models, heavy datasets, secrets, and caches from pushing to Git
+# ==============================================================================
+
+# Python bytecode & runtime caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Sensitive data, credentials, and environment variables
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+*credentials*.json
+*secret*.yaml
+
+# Large Machine Learning Models & Heavy Weights (>100MB limit on GitHub)
+models/
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.ckpt
+*.h5
+
+# Heavy Datasets, Vector Stores, and Embeddings
+data/raw/
+data/processed/
+data/interim/
+data/vector_db/
+data/chroma/
+*.sqlite3
+*.npy
+*.npz
+
+# HuggingFace, Torch, & Ollama Caches
+.cache/
+huggingface/
+models/**/.cache/
+
+# Operating System & IDE files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
